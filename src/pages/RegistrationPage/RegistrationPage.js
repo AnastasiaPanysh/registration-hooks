@@ -1,7 +1,12 @@
-function RegistrationPage(){
-    return(
-        <>www</>
-    )
-}
+import Registration from '../../components/Registration/Registration';
 
-export default RegistrationPage
+function RegistrationPage() {
+
+  return (
+    <div>
+      <Registration></Registration>
+    </div>
+  );
+};
+
+export default RegistrationPage;
