@@ -1,6 +1,8 @@
 import { TextField, Button } from '@mui/material'
 import { useState } from "react"
 import style from './Registration.module.css'
+import Header from '../Header/Header'
+import { Link } from 'react-router-dom'
 
 function Registration() {
     const [form, setForm] = useState({
@@ -15,7 +17,7 @@ function Registration() {
 
     function comparePasswords() {
         try {
-            if (form.password !== form.confirmPassword) throw new Error('not same values')
+            if (form.password === form.confirmPassword) throw new Error('not same values')
             else alert('success')
         } catch (error) {
             alert(error.message)
@@ -23,8 +25,10 @@ function Registration() {
     }
 
     return (
+        <>
+        <Header></Header>
         <div className={style['wrapper']}>
-            <h1>LOGIN</h1>
+            <h1>REGISTRATION</h1>
             <div>
                 <TextField onChange={changeForm} name='email' id="standard-basic" label="Email" variant="standard" />
             </div>
@@ -37,14 +41,9 @@ function Registration() {
             <div>
                 <Button onClick={comparePasswords} variant="outlined" >SIGN UP</Button>
             </div>
-            <p>
-                Already have an account?
-                {/* <Link>
-                    Log In
-                </Link> */}
-            </p>
-
+            <p>Already have an account? <Link to="/auth" >SIGN IN</Link> </p>
         </div>
+        </>
     )
 }
 export default Registration
